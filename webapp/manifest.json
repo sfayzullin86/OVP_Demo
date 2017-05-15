@@ -1,0 +1,172 @@
+{
+	"_version": "1.5.0",
+	"start_url": "start.html",
+	"sap.app": {
+		"id": "com.demo",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.2.2"
+		},
+		"title": "{{app_title}}",
+		"description": "{{app_description}}",
+		"ach": "sap",
+		"resources": "resources.json",
+		"dataSources": {
+			"Z_OVP_DEMO_CDS": {
+				"uri": "/sap/opu/odata/sap/Z_OVP_DEMO_CDS/",
+				"type": "OData",
+				"settings": {
+					"annotations": [
+						"Z_OVP_DEMO_CDS_VAN",
+						"annotation1"
+					],
+					"localUri": "localService/Z_OVP_DEMO_CDS/metadata.xml"
+				}
+			},
+			"Z_OVP_DEMO_CDS_VAN": {
+				"uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='Z_OVP_DEMO_CDS_VAN',Version='0001')/$value/",
+				"type": "ODataAnnotation",
+				"settings": {
+					"localUri": "localService/Z_OVP_DEMO_CDS/Z_OVP_DEMO_CDS_VAN.xml"
+				}
+			},
+			"annotation1": {
+				"type": "ODataAnnotation",
+				"uri": "annotations/annotation1.xml",
+				"settings": {
+					"localUri": "annotations/annotation1.xml"
+				}
+			}
+		},
+		"sourceTemplate": {
+			"id": "OVP.cardtemplate",
+			"version": "0.0.0"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": [
+			"sap_hcb",
+			"sap_belize"
+		]
+	},
+	"sap.ui5": {
+		"dependencies": {
+			"minUI5Version": "1.32.0",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.ui.layout": {},
+				"sap.f": {},
+				"sap.ushell": {},
+				"sap.collaboration": {},
+				"sap.ui.comp": {},
+				"sap.uxap": {},
+				"sap.ovp": {}
+			}
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"uri": "i18n/i18n.properties"
+			},
+			"Z_OVP_DEMO_CDS": {
+				"dataSource": "Z_OVP_DEMO_CDS",
+				"settings": {}
+			},
+			"@i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"uri": "i18n/i18n.properties"
+			}
+		},
+		"extends": {
+			"extensions": {}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		}
+	},
+	"sap.ovp": {
+		"globalFilterModel": "Z_OVP_DEMO_CDS",
+		"globalFilterEntityType": "Z_Ovp_Demo",
+		"cards": {
+			"com.demo_card00": {
+				"model": "Z_OVP_DEMO_CDS",
+				"template": "sap.ovp.cards.table",
+				"settings": {
+					"title": "{{com.demo_card00_title}}",
+					"subTitle": "{{com.demo_card00_subTitle}}",
+					"entitySet": "Z_Ovp_Demo",
+					"addODataSelect": "false",
+					"annotationPath": "com.sap.vocabularies.UI.v1.LineItem#ordOverView"
+				}
+			},
+			"com.demo_card01": {
+				"model": "Z_OVP_DEMO_CDS",
+				"template": "sap.ovp.cards.list",
+				"settings": {
+					"title": "{{com.demo_card01_title}}",
+					"subTitle": "{{com.demo_card01_subTitle}}",
+					"entitySet": "Z_Ovp_Demo",
+					"listType": "extended",
+					"listFlavor": "bar",
+					"sortBy": "changed_at",
+					"sortOrder": "descending",
+					"addODataSelect": "false",
+					"annotationPath": "com.sap.vocabularies.UI.v1.LineItem#ordOverView"
+				}
+			},
+			"com.demo_card02": {
+				"model": "Z_OVP_DEMO_CDS",
+				"template": "sap.ovp.cards.stack",
+				"settings": {
+					"title": "{{com.demo_card02_title}}",
+					"subTitle": "{{com.demo_card02_subTitle}}",
+					"entitySet": "Z_Ovp_Demo",
+					"addODataSelect": "false",
+					"annotationPath": "com.sap.vocabularies.UI.v1.LineItem"
+				}
+			},
+			"com.demo_card03": {
+				"model": "Z_OVP_DEMO_CDS",
+				"template": "sap.ovp.cards.charts.analytical",
+				"settings": {
+					"title": "{{com.demo_card06_title}}",
+					"subTitle": "{{com.demo_card06_subTitle}}",
+					"entitySet": "Z_Ovp_Demo",
+					"selectionAnnotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant",
+					"chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#ordNetChart3",
+					"presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#top5Changed2",
+					"selectionPresentationAnnotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant",
+					"dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#myTarget",
+					"identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification"
+				}
+			},
+			"com.demo_card06": {
+				"model": "Z_OVP_DEMO_CDS",
+				"template": "sap.ovp.cards.charts.analytical",
+				"settings": {
+					"title": "{{com.demo_card06_title}}",
+					"subTitle": "{{com.demo_card06_subTitle}}",
+					"entitySet": "Z_Ovp_Demo",
+					"selectionAnnotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant",
+					"chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#ordNetChart",
+					"presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#top5Changed",
+					"selectionPresentationAnnotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant",
+					"dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#myTarget",
+					"identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification"
+				}
+			}
+		}
+	}
+}
